@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -18,13 +18,12 @@ namespace VulnApp.Controllers
             }
 
             Random rng = new();
-            var numbers = new int[100_000];
-            Parallel.For(0, 10, x =>
+            int count = 100_000;
+            var numbers = new int[count];
+
+            Parallel.For(0, count, x =>
             {
-                for (int i = 0; i < 10_000; ++i)
-                {
-                    numbers[i * x] = rng.Next();
-                }
+                numbers[x] = rng.Next();
             });
 
             var numbersStr = string.Join(string.Empty, numbers.Select(x => x.ToString()));
