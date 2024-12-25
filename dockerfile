@@ -11,9 +11,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0
 
 # Install Turkish locale
 RUN apt-get update \
-    && apt-get install -y locales \
-    && locale-gen tr_TR.UTF-8 \
-    && update-locale LANG=tr_TR.UTF-8 LC_ALL=tr_TR.UTF-8
+    && apt-get install -y locales
 
 # Set the locale environment variable
 ENV LANG tr_TR.UTF-8
